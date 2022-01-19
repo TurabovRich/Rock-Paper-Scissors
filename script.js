@@ -20,10 +20,11 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function getComputerChoice() {
-        const rand = Math.random()
-        if (rand < 0.34) {
+        const rand = Math.floor(Math.random() * 3)
+        console.log(rand);
+        if (rand == 0) {
             return 'rock'
-        } else if (rand <= 0.67) {
+        } else if (rand == 1) {
             return 'paper'
         } else {
             return 'scissors'
@@ -31,22 +32,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function getWinner(p, c) {
-        if (p === c) {
+        if (p == c) {
             return 'draw'
-        } else if (p === 'rock') {
-            if (c === ' paper') {
+        } else if (p == 'rock') {
+            if (c == 'paper') {
                 return 'computer'
             } else {
                 return 'player'
             }
-        } else if (p === 'paper') {
-            if (c === 'scissors') {
+        } else if (p == 'paper') {
+            if (c == 'scissors') {
                 return 'computer'
             } else {
                 return 'player'
             }
-        } else if (p === 'scissors') {
-            if (c === rock) {
+        } else if (p == 'scissors') {
+            if (c == 'rock') {
                 return 'computer'
             } else {
                 return 'player'
@@ -55,31 +56,31 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function showWinner(winner, computerChoice) {
-        if (winner === 'player') {
+        if (winner == 'player') {
             scoreBoard.player++
             result.innerHTML = `
             <h1 class="text-win">You win</h1>
             <i class="fas  fa-hand-${computerChoice} fa-10x"></i>
-            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)})</strong></p>
+            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase()  + computerChoice.slice(1)}</strong></p>
         `
-        } else if (winner === 'computer') {
+        } else if (winner == 'computer') {
             scoreBoard.computer++
             result.innerHTML = `
-            <h1 class="text-lose">Yu lose</h1>
+            <h1 class="text-lose">You lose</h1>
             <i class="fas  fa-hand-${computerChoice} fa-10x"></i>
-            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)})</strong></p>
+            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase()  + computerChoice.slice(1)}</strong></p>
         `
         } else {
             result.innerHTML = `
             <h1>It's A Draw</h1>
             <i class="fas  fa-hand-${computerChoice} fa-10x"></i>
-            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)})</strong></p>
+            <p>Computer choice <strong>${computerChoice.charAt(0).toUpperCase()  + computerChoice.slice(1)}</strong></p>
         `
         }
 
         score.innerHTML = `
         <p>player: ${scoreBoard.player}</p>
-        <p>computer: ${scoreBoard.computer }</p>
+        <p>computer: ${scoreBoard.computer}</p>
         `
         modal.style.display = 'block'
     }
